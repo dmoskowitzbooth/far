@@ -54,21 +54,27 @@
         <%= @the_user.phone %>
       </dd>
 
-
-      <dt>
-        Created at
+            <dt>
+        Base
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_user.created_at) %> ago
+        <%= @the_user.base %>
       </dd>
 
-      <dt>
-        Updated at
+            <dt>
+        DOH
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_user.updated_at) %> ago
+        <%= @the_user.doh %>
       </dd>
-    </dl>
+
+            <dt>
+        Image
+      </dt>
+      <dd>
+        <td><img src="<%=@the_user.image %>" style="width:250px;"></td>
+      </dd>
+
   </div>
 </div>
 
@@ -120,6 +126,30 @@
         </label>
 
         <input type="text" id="phone_box" name="query_phone" value="<%= @the_user.phone %>">
+      </div>
+
+            <div>
+        <label for="base_box">
+          Base
+        </label>
+
+        <input type="text" id="base_box" name="query_base" value="<%= @the_user.base %>">
+      </div>
+
+                  <div>
+        <label for="doh_box">
+          DOH
+        </label>
+
+        <input type="date" id="doh_box" name="query_doh" value="<%= @the_user.doh %>">
+      </div>
+
+                  <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_user.image %>">
       </div>
 
       <button>

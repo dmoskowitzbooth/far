@@ -43,6 +43,9 @@ class UsersController < ApplicationController
     the_user.last_name = params.fetch("query_last_name")
     the_user.email = params.fetch("query_email")
     the_user.phone = params.fetch("query_phone")
+    the_user.base = params.fetch("query_base")
+    the_user.doh = params.fetch("query_doh")
+    the_user.image = params.fetch("query_image")
 
     if the_user.valid?
       the_user.save
