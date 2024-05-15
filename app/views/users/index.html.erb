@@ -80,10 +80,6 @@
         </th>
 
         <th>
-          Sup
-        </th>
-
-        <th>
           First name
         </th>
 
@@ -92,37 +88,18 @@
         </th>
 
         <th>
-          Email
+          Base
         </th>
 
-        <th>
-          Phone
-        </th>
-
-        <th>
-          Conference number
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
       </tr>
 
       <% @list_of_users.each do |a_user| %>
       <tr>
         <td>
-          <%= a_user.id %>
-        </td>
-
-        <td>
-          <%= a_user.emp_id %>
+              <a href="/users/<%= a_user.emp_id %>">
+        <%= a_user.emp_id %>
+      </a>
+          
         </td>
 
         <td>
@@ -134,17 +111,7 @@
         </td>
 
         <td>
-          <%= a_user.email %>
-        </td>
-
-        <td>
-          <%= a_user.phone %>
-        </td>
-
-        <td>
-          <a href="/users/<%= a_user.id %>">
-            Show details
-          </a>
+          <%= a_user.base %>
         </td>
       </tr>
       <% end %>

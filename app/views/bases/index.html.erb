@@ -1,0 +1,100 @@
+<div>
+  <div>
+    <h1>
+      List of all bases
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new basis
+    </h2>
+
+    <form action="/insert_basis" method="post">
+      <div>
+        <label for="base_box">
+          Base
+        </label>
+
+        <input type="text" id="base_box" name="query_base">
+      </div>
+
+      <div>
+        <input type="checkbox" id="cobase_box" name="query_cobase" value="1">
+
+        <label for="cobase_box">Cobase</label>
+      </div>
+
+      <button>
+        Create basis
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Base
+        </th>
+
+        <th>
+          Cobase
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_bases.each do |a_basis| %>
+      <tr>
+        <td>
+          <%= a_basis.id %>
+        </td>
+
+        <td>
+          <%= a_basis.base %>
+        </td>
+
+        <td>
+          <%= a_basis.cobase %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_basis.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_basis.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/bases/<%= a_basis.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

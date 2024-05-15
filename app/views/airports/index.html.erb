@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all airports
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new airport
+    </h2>
+
+    <form action="/insert_airport" method="post">
+      <div>
+        <label for="base_box">
+          Base
+        </label>
+
+        <input type="text" id="base_box" name="query_base">
+      </div>
+
+      <div>
+        <label for="airport_box">
+          Airport
+        </label>
+
+        <input type="text" id="airport_box" name="query_airport">
+      </div>
+
+      <button>
+        Create airport
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Base
+        </th>
+
+        <th>
+          Airport
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_airports.each do |an_airport| %>
+      <tr>
+        <td>
+          <%= an_airport.id %>
+        </td>
+
+        <td>
+          <%= an_airport.base %>
+        </td>
+
+        <td>
+          <%= an_airport.airport %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_airport.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_airport.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/airports/<%= an_airport.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

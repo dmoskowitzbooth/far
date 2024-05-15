@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_15_221246) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_15_224705) do
+  create_table "airports", force: :cascade do |t|
+    t.string "base"
+    t.string "airport"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bases", force: :cascade do |t|
+    t.string "base"
+    t.boolean "cobase"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "disciplines", force: :cascade do |t|
+    t.integer "emp_id"
+    t.integer "sup_id"
+    t.string "level"
+    t.date "effective"
+    t.date "expires"
+    t.string "reason"
+    t.string "expectations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,6 +58,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_15_221246) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "fact_findings", force: :cascade do |t|
+    t.integer "emp_id"
+    t.date "date"
+    t.time "time"
+    t.string "supervisor"
+    t.integer "sup_id"
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "supervisors", force: :cascade do |t|
     t.integer "sup_id"
     t.string "first_name"
@@ -39,6 +76,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_15_221246) do
     t.string "email"
     t.string "phone"
     t.string "conference_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "title"
+    t.string "reason"
+    t.string "expectations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Template #<%= @the_template.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/templates">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_template/<%= @the_template.id %>">
+          Delete template
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_template.title %>
+      </dd>
+
+      <dt>
+        Reason
+      </dt>
+      <dd>
+        <%= @the_template.reason %>
+      </dd>
+
+      <dt>
+        Expectations
+      </dt>
+      <dd>
+        <%= @the_template.expectations %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_template.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_template.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit template
+    </h2>
+
+    <form action="/modify_template/<%= @the_template.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_template.title %>">
+      </div>
+
+      <div>
+        <label for="reason_box">
+          Reason
+        </label>
+
+        <input type="text" id="reason_box" name="query_reason" value="<%= @the_template.reason %>">
+      </div>
+
+      <div>
+        <label for="expectations_box">
+          Expectations
+        </label>
+
+        <input type="text" id="expectations_box" name="query_expectations" value="<%= @the_template.expectations %>">
+      </div>
+
+      <button>
+        Update template
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

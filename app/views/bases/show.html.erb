@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Basis #<%= @the_basis.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/bases">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_basis/<%= @the_basis.id %>">
+          Delete basis
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Base
+      </dt>
+      <dd>
+        <%= @the_basis.base %>
+      </dd>
+
+      <dt>
+        Cobase
+      </dt>
+      <dd>
+        <%= @the_basis.cobase %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_basis.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_basis.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit basis
+    </h2>
+
+    <form action="/modify_basis/<%= @the_basis.id %>"  method="post" >
+      <div>
+        <label for="base_box">
+          Base
+        </label>
+
+        <input type="text" id="base_box" name="query_base" value="<%= @the_basis.base %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="cobase_box" name="query_cobase" value="1" <%= "checked" if @the_basis.cobase %>>
+
+        <label for="cobase_box">
+            Cobase
+        </label>
+      </div>
+
+      <button>
+        Update basis
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Airport #<%= @the_airport.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/airports">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_airport/<%= @the_airport.id %>">
+          Delete airport
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Base
+      </dt>
+      <dd>
+        <%= @the_airport.base %>
+      </dd>
+
+      <dt>
+        Airport
+      </dt>
+      <dd>
+        <%= @the_airport.airport %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_airport.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_airport.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit airport
+    </h2>
+
+    <form action="/modify_airport/<%= @the_airport.id %>"  method="post" >
+      <div>
+        <label for="base_box">
+          Base
+        </label>
+
+        <input type="text" id="base_box" name="query_base" value="<%= @the_airport.base %>">
+      </div>
+
+      <div>
+        <label for="airport_box">
+          Airport
+        </label>
+
+        <input type="text" id="airport_box" name="query_airport" value="<%= @the_airport.airport %>">
+      </div>
+
+      <button>
+        Update airport
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
