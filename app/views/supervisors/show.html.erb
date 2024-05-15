@@ -1,0 +1,146 @@
+<div>
+  <div>
+    <h1>
+      Supervisor #<%= @the_supervisor.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/supervisors">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_supervisor/<%= @the_supervisor.id %>">
+          Delete supervisor
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sup
+      </dt>
+      <dd>
+        <%= @the_supervisor.sup_id %>
+      </dd>
+
+      <dt>
+        First name
+      </dt>
+      <dd>
+        <%= @the_supervisor.first_name %>
+      </dd>
+
+      <dt>
+        Last name
+      </dt>
+      <dd>
+        <%= @the_supervisor.last_name %>
+      </dd>
+
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @the_supervisor.email %>
+      </dd>
+
+      <dt>
+        Phone
+      </dt>
+      <dd>
+        <%= @the_supervisor.phone %>
+      </dd>
+
+      <dt>
+        Conference number
+      </dt>
+      <dd>
+        <%= @the_supervisor.conference_number %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_supervisor.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_supervisor.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit supervisor
+    </h2>
+
+    <form action="/modify_supervisor/<%= @the_supervisor.id %>"  method="post" >
+      <div>
+        <label for="sup_id_box">
+          Sup
+        </label>
+
+        <input type="text" id="sup_id_box" name="query_sup_id" value="<%= @the_supervisor.sup_id %>">
+      </div>
+
+      <div>
+        <label for="first_name_box">
+          First name
+        </label>
+
+        <input type="text" id="first_name_box" name="query_first_name" value="<%= @the_supervisor.first_name %>">
+      </div>
+
+      <div>
+        <label for="last_name_box">
+          Last name
+        </label>
+
+        <input type="text" id="last_name_box" name="query_last_name" value="<%= @the_supervisor.last_name %>">
+      </div>
+
+      <div>
+        <label for="email_box">
+          Email
+        </label>
+
+        <input type="text" id="email_box" name="query_email" value="<%= @the_supervisor.email %>">
+      </div>
+
+      <div>
+        <label for="phone_box">
+          Phone
+        </label>
+
+        <input type="text" id="phone_box" name="query_phone" value="<%= @the_supervisor.phone %>">
+      </div>
+
+      <div>
+        <label for="conference_number_box">
+          Conference number
+        </label>
+
+        <input type="text" id="conference_number_box" name="query_conference_number" value="<%= @the_supervisor.conference_number %>">
+      </div>
+
+      <button>
+        Update supervisor
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
