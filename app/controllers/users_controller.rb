@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
     @the_user = matching_users.at(0)
 
+    matching_disciplines = Discipline.where({ :emp_id => the_id })
+    @list_of_disciplines = matching_disciplines.order({ :created_at => :desc })
+
     render({ :template => "users/show" })
   end
 
