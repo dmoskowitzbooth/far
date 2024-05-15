@@ -9,13 +9,16 @@ class UsersController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
+    today = Date.today
 
     matching_users = User.where({ :emp_id => the_id })
 
     @the_user = matching_users.at(0)
 
-    matching_disciplines = Discipline.where({ :emp_id => the_id })
+    matching_disciplines = Discipline.where({ :emp_id => the_id }).where('expires >= ?', today)
+    matching_disciplines_exp = Discipline.where({ :emp_id => the_id }).where('expires < ?', today)
     @list_of_disciplines = matching_disciplines.order({ :created_at => :desc })
+    @list_of_disciplines_exp = matching_disciplines_exp.order({ :created_at => :desc })
 
     render({ :template => "users/show" })
   end

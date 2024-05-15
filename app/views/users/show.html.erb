@@ -80,7 +80,7 @@
 
 <hr>
 
-<hr>
+<h2>Active Discipline</h2>
 <div>
   <div>
     <table border="1">
@@ -143,6 +143,72 @@
       <% end %>
     </table>
   </div>
+<hr>
+
+<h3>Expired Discipline</h3>
+
+    <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          Level
+        </th>
+
+        <th>
+          Reason
+        </th>
+
+        <th>
+          Expectations
+        </th>
+
+       <th>
+          Effective
+        </th>
+
+               <th>
+          Expired
+        </th>
+
+        <th>
+          Issued By
+        </th>
+
+      </tr>
+
+      <% @list_of_disciplines_exp.each do |a_discipline| %>
+      <tr>
+        <td>
+        <a href="/disciplines/<%= a_discipline.id %>">
+          <%= a_discipline.level %>
+        </td>
+
+        <td>
+          <%= a_discipline.reason %>
+        </td>
+
+        <td>
+          <%= a_discipline.expectations %>
+        </td>
+
+        <td>
+          <%= a_discipline.effective %>
+        </td>
+
+        <td>
+          <%= a_discipline.expires %>
+        </td>
+
+        <td>
+          <%= a_discipline.sup_id %>
+        </td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  
 </div>
 
 <hr>
