@@ -29,7 +29,7 @@ class DisciplinesController < ApplicationController
 
     if the_discipline.valid?
       the_discipline.save
-      redirect_to("/disciplines", { :notice => "Discipline created successfully." })
+      redirect_to("/users/#{the_discipline.emp_id}", { :notice => "Discipline created successfully." })
     else
       redirect_to("/disciplines", { :alert => the_discipline.errors.full_messages.to_sentence })
     end
