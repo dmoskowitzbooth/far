@@ -5,15 +5,7 @@
     </h1>
 
     <div>
-      <div>
-        <%= link_to "Go back", :back %>
-      </div>
 
-      <div>
-        <a href="/delete_user/<%= @the_user.id %>">
-          Delete user
-        </a>
-      </div>
     </div>
 
     <dl>
@@ -81,7 +73,7 @@
 <h2>Active Discipline</h2>
 <div>
   <div>
-    <table border="1">
+    <table class="table">
       <tr>
 
         <th>
@@ -146,7 +138,7 @@
 <h3>Expired Discipline</h3>
 
     <div>
-    <table border="1">
+    <table class="table">
       <tr>
 
         <th>
@@ -308,15 +300,20 @@
           Sup
         </label>
 
-        <input type="text" id="sup_id_box" name="query_sup_id">
+        <input type="text" id="sup_id_box" name="query_sup_id" value="<%= @current_user.emp_id %>>
       </div>
 
       <div>
-        <label for="level_box">
-          Level
-        </label>
+      <label for="level_box" class="form-label">Discipline Level</label>
+<input class="form-control" list="datalistOptions" id="level_box" placeholder="Type to search..." name="query_level">
+<datalist id="datalistOptions">
+  <option value="Coach & Counsel">
+  <option value="Documented Verbal Warning">
+  <option value="Documented Written Warning">
+  <option value="Final Termination Warning">
+  <option value="Termination">
+</datalist>
 
-        <input type="text" id="level_box" name="query_level">
       </div>
 
       <div>
@@ -340,7 +337,7 @@
           Reason
         </label>
 
-        <input type="text" id="reason_box" name="query_reason">
+        <textarea class="form-control" id="reason_box" name="query_reason"></textarea>
       </div>
 
       <div>
@@ -348,7 +345,7 @@
           Expectations
         </label>
 
-        <input type="text" id="expectations_box" name="query_expectations">
+        <textarea class="form-control" id="expectations_box" name="query_expectations"></textarea>
       </div>
 
       <button>
@@ -356,7 +353,9 @@
       </button>
     </form>
   </div>
-
+   <div>
+        <a href="/delete_user/<%= @the_user.id %>">
+          Delete user
+        </a>
+      </div>
 <hr>
-
-
