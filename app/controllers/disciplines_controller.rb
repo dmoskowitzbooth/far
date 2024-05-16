@@ -34,13 +34,16 @@ class DisciplinesController < ApplicationController
 
     if the_discipline.valid?
       the_discipline.save
+      mg_client = Mailgun::Client.new(mg_api_key)
+
+      # Craft your email as a Hash literal with these four keys
       email_info =  { 
         :from => "umbrella@appdevproject.com",
         :to => "dmoskowitz815@gmail.com",  # Put your own email address here if you want to see it in action
         :subject => "Take an umbrella today!",
         :text => "It's going to rain today, take an umbrella with you!"
       }
-      mg_client.send_message(mg_sending_domain, email_info)
+      end
       
       redirect_to("/users/#{the_discipline.emp_id}", { :notice => "Discipline created successfully." })
     else
