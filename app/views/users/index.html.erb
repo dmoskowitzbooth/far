@@ -5,11 +5,71 @@
     </h1>
   </div>
 </div>
-
+<%= form_with(url: users_path, method: :get, local: true) do %>
+  <div class="form-group">
+    <%= label_tag :search, "Search Users" %>
+    <%= text_field_tag :search, params[:search], class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
 <hr>
 
 <div>
+  
+
+<hr>
+<div>
   <div>
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          First name
+        </th>
+
+        <th>
+          Last name
+        </th>
+
+        <th>
+          Base
+        </th>
+
+      </tr>
+
+      <% @list_of_users.each do |a_user| %>
+      <tr>
+        <td>
+              <a href="/users/<%= a_user.emp_id %>">
+        <%= a_user.emp_id %>
+      </a>
+          
+        </td>
+
+        <td>
+          <%= a_user.first_name %>
+        </td>
+
+        <td>
+          <%= a_user.last_name %>
+        </td>
+
+        <td>
+          <%= a_user.base %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+<div>
     <h2>
       Add a new user
     </h2>
@@ -69,54 +129,3 @@
     </form>
   </div>
 </div>
-
-<hr>
-<div>
-  <div>
-    <table class="table">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          First name
-        </th>
-
-        <th>
-          Last name
-        </th>
-
-        <th>
-          Base
-        </th>
-
-      </tr>
-
-      <% @list_of_users.each do |a_user| %>
-      <tr>
-        <td>
-              <a href="/users/<%= a_user.emp_id %>">
-        <%= a_user.emp_id %>
-      </a>
-          
-        </td>
-
-        <td>
-          <%= a_user.first_name %>
-        </td>
-
-        <td>
-          <%= a_user.last_name %>
-        </td>
-
-        <td>
-          <%= a_user.base %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>

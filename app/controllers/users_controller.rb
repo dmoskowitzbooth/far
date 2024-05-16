@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   def index
-    matching_users = User.all
 
-    @list_of_users = matching_users.order({ :created_at => :desc })
+    if params[:search].present?
+      search_term = "%#{params[:search]}%"
+      @list_of_users = User.where("emp_id LIKE ? OR first_name LIKE ? OR last_name LIKE ?", search_term, search_term, search_term)
+    else
+      @list_of_users = User.all
+    end
+
 
     render({ :template => "users/index" })
   end
