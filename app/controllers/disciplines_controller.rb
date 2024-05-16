@@ -34,9 +34,12 @@ class DisciplinesController < ApplicationController
     if the_discipline.valid?
       the_discipline.save
 
-      NotifierMailer.welcome(the_discipline.emp_id).deliver_now # sends the email
-      mail = NotifierMailer.welcome(the_discipline.emp_id)      # => an ActionMailer::MessageDelivery object
-      mail.deliver_now 
+      mail(
+        to: 'daniel.moskowitz@chicagobooth.edu',
+        subject: 'You are awesome!',
+        category: 'Test category',
+        custom_variables: { test_variable: 'abc' }
+      )
       
       redirect_to("/users/#{the_discipline.emp_id}", { :notice => "Discipline created successfully." })
     else
