@@ -20,7 +20,7 @@ class DisciplinesController < ApplicationController
   end
 
   def create
-    @user="dmoskowitz815@gmail.com"
+    
 
     the_discipline = Discipline.new
     the_discipline.emp_id = params.fetch("query_emp_id")
@@ -30,6 +30,7 @@ class DisciplinesController < ApplicationController
     the_discipline.expires = params.fetch("query_expires")
     the_discipline.reason = params.fetch("query_reason")
     the_discipline.expectations = params.fetch("query_expectations")
+    @user=the_discipline.employee.email
 
     if the_discipline.valid?
       the_discipline.save
