@@ -20,7 +20,7 @@ class DisciplinesController < ApplicationController
   end
 
   def create
-    @user=Discipline.new()
+    @user="dmoskowitz815@gmail.com"
 
     the_discipline = Discipline.new
     the_discipline.emp_id = params.fetch("query_emp_id")
@@ -34,7 +34,7 @@ class DisciplinesController < ApplicationController
     if the_discipline.valid?
       the_discipline.save
 
-      UserMailer.with(user: the_discipline.emp_id).welcome_email.deliver_later
+      UserMailer.with(user: @user).welcome_email.deliver_later
       
       redirect_to("/users/#{the_discipline.emp_id}", { :notice => "Discipline created successfully." })
     else
