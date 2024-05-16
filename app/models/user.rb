@@ -30,4 +30,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-end
+         has_many :disciplines_as_employee, class_name: 'Discipline', primary_key: :emp_id, foreign_key: :emp_id
+         has_many :disciplines_as_supervisor, class_name: 'Discipline', primary_key: :emp_id, foreign_key: :sup_id
+        end
