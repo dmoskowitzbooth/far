@@ -1,5 +1,6 @@
 class DisciplinesController < ApplicationController
   require 'rest-client'
+  require 'mailgun'
   def index
     matching_disciplines = Discipline.all
 
@@ -20,7 +21,7 @@ class DisciplinesController < ApplicationController
 
   def create
     mg_api_key = ENV.fetch("MAILGUN")
-    mg_sending_domain = "@api.mailgun.net/v3/far/messages"
+    mg_sending_domain = "sandbox613e5c1c4a38412abd57d4a424d8fe7f.mailgun.org"
     mg_client = Mailgun::Client.new(mg_api_key)
 
     the_discipline = Discipline.new
@@ -34,15 +35,20 @@ class DisciplinesController < ApplicationController
 
     if the_discipline.valid?
       the_discipline.save
-      mg_client = Mailgun::Client.new(mg_api_key)
 
-      # Craft your email as a Hash literal with these four keys
-      email_info =  { 
-        :from => "umbrella@appdevproject.com",
-        :to => "dmoskowitz815@gmail.com",  # Put your own email address here if you want to see it in action
-        :subject => "Take an umbrella today!",
-        :text => "It's going to rain today, take an umbrella with you!"
-      }
+      def send_simple_message
+        mg_client = Mailgun::Client.new(mg_api_key)
+
+        # Craft your email as a Hash literal with these four keys
+        email_info =  { 
+          :from => "umbrella@appdevproject.com",
+          :to => "dmoskowitz815@gmail.com",  # Put your own email address here if you want to see it in action
+          :subject => "Take an umbrella today!",
+          :text => "It's going to rain today, take an umbrella with you!"
+        }
+        
+        # Send your email!
+        mg_client.send_message(mg_sending_domain, email_info)
       end
       
       redirect_to("/users/#{the_discipline.emp_id}", { :notice => "Discipline created successfully." })
