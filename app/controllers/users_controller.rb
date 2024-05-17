@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     if the_user.valid?
       the_user.save
-      redirect_to("/users", { :notice => "user created successfully." })
+      redirect_to("/users/#{the_user.emp_id}", { :notice => "user created successfully." })
     else
       redirect_to("/users", { :alert => the_user.errors.full_messages.to_sentence })
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    the_user = User.where({ :id => the_id }).at(0)
+    the_user = User.where({ :emp_id => the_id }).at(0)
 
     the_user.emp_id = params.fetch("query_emp_id")
     the_user.first_name = params.fetch("query_first_name")
@@ -58,9 +58,9 @@ class UsersController < ApplicationController
 
     if the_user.valid?
       the_user.save
-      redirect_to("/users/#{the_user.id}", { :notice => "user updated successfully."} )
+      redirect_to("/users/#{the_user.emp_id}", { :notice => "user updated successfully."} )
     else
-      redirect_to("/users/#{the_user.id}", { :alert => the_user.errors.full_messages.to_sentence })
+      redirect_to("/users/#{the_user.emp_id}", { :alert => the_user.errors.full_messages.to_sentence })
     end
   end
 

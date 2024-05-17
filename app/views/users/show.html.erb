@@ -210,12 +210,11 @@
       Edit user
     </h2>
 
-    <form action="/modify_user/<%= @the_user.id %>"  method="post" >
+    <form action="/modify_user/<%= @the_user.emp_id %>"  method="post" >
       <div>
         <label for="emp_id_box">
           EMP_ID
         </label>
-
         <input type="text" id="emp_id_box" name="query_emp_id" value="<%= @the_user.emp_id %>">
       </div>
 
