@@ -74,14 +74,7 @@
       Add a new user
     </h2>
 
-    <form action="/insert_user" method="post">
-      <div>
-        <label for="sup_id_box">
-          Sup
-        </label>
-
-        <input type="text" id="sup_id_box" name="query_sup_id">
-      </div>
+    <form action="users/insert_user" method="post">
 
       <div>
         <label for="first_name_box">
@@ -113,14 +106,6 @@
         </label>
 
         <input type="text" id="phone_box" name="query_phone">
-      </div>
-
-      <div>
-        <label for="conference_number_box">
-          Conference number
-        </label>
-
-        <input type="text" id="conference_number_box" name="query_conference_number">
       </div>
 
       <button>

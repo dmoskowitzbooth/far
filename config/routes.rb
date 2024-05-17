@@ -122,6 +122,7 @@ Rails.application.routes.draw do
   get("/users/:path_id", { :controller => "users", :action => "show" })
 
   post("/modify_user/:path_id", { :controller => "users", :action => "update" })
+  post("users/insert_user", { :controller => "users", :action => "create" })
 
   # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
 

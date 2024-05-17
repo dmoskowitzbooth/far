@@ -30,12 +30,10 @@ class UsersController < ApplicationController
 
   def create
     the_user = User.new
-    the_user.sup_id = params.fetch("query_sup_id")
     the_user.first_name = params.fetch("query_first_name")
     the_user.last_name = params.fetch("query_last_name")
     the_user.email = params.fetch("query_email")
     the_user.phone = params.fetch("query_phone")
-    the_user.conference_number = params.fetch("query_conference_number")
 
     if the_user.valid?
       the_user.save
