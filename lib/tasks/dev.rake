@@ -4,6 +4,12 @@ task({ :sample_data => :environment }) do
   if Rails.env.development?
     User.destroy_all
   end
+  if Rails.env.production?
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
+  end
+  
   emp_ids = (400000..450000).to_a.sample(500)
 
   500.times do
