@@ -1,6 +1,10 @@
 /* app/assets/stylesheets/form_styles.css */
 
 /* General form styles */
+.form-container {
+  padding-top: 20px; /* Adjust this value as needed */
+}
+
 form {
   max-width: 600px;
   margin: 0 auto;

@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <div class="container">
     <h1>
       <%= @the_user.first_name %> <%= @the_user.last_name %>
     </h1>
@@ -8,6 +8,12 @@
 
     </div>
 
+<div class="container">
+          <dt>
+      </dt>
+      <dd>
+        <td><img src="<%=@the_user.image %>" style="width:250px;"></td>
+      </dd>
     <dl>
       <dt>
         Employee ID
@@ -58,20 +64,22 @@
         <%= @the_user.doh %>
       </dd>
 
-            <dt>
-        Image
-      </dt>
-      <dd>
-        <td><img src="<%=@the_user.image %>" style="width:250px;"></td>
-      </dd>
-
+  
+</div>
   </div>
 </div>
 
 <hr>
-
-<h2>Active Discipline</h2>
-<div>
+<div class="accordion" id="accordionBasic">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Active Discipline
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionBasic">
+      <div class="accordion-body">
+        <div>
   <div>
     <table class="table">
       <tr>
@@ -133,11 +141,18 @@
       <% end %>
     </table>
   </div>
-<hr>
-
-<h3>Expired Discipline</h3>
-
-    <div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Expired Discipline
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionBasic">
+      <div class="accordion-body">
+        <div>
     <table class="table">
       <tr>
 
@@ -198,16 +213,102 @@
       <% end %>
     </table>
   </div>
-  
-</div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Issue Discipline
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionBasic">
+      <div class="accordion-body">
+        <div class="form-container", style="float:left; width:50%; margin:auto">
+    <form action="/insert_discipline" method="post" class="row g-3">
+        <h2>
+      Issue Discipline
+    </h2>
+      <div class="col-md-6"> 
+        <label for="emp_id_box">
+          Employee
+        </label>
 
-<hr>
+        <input type="text" readonly class="form-control-plaintext" id="emp_id_box" name="query_emp_id" value="<%= @the_user.emp_id %>">
+      </div>
 
-<div class="container-md">
-  <div>
+      <div class="col-md-6">
+        <label for="sup_id_box">
+          Supervisor
+        </label>
 
+        <input type="text" readonly class="form-control-plaintext" id="sup_id_box" name="query_sup_id" value="<%= current_user.emp_id %>">
+      </div>
 
-    <form action="/modify_user/<%= @the_user.id %>"  method="post" >
+      <div class="col-12">
+      <label for="level_box" class="form-label">Discipline Level</label>
+<input class="form-control" list="datalistOptions" id="level_box" placeholder="Type to search..." name="query_level">
+<datalist id="datalistOptions">
+  <option value="Coach & Counsel">
+  <option value="Documented Verbal Warning">
+  <option value="Documented Written Warning">
+  <option value="Final Termination Warning">
+  <option value="Termination">
+</datalist>
+
+      </div>
+
+      <div class="col-md-6">
+        <label for="effective_box">
+          Effective
+        </label>
+
+        <input type="date" id="effective_box" name="query_effective">
+      </div>
+
+      <div class="col-md-6">
+        <label for="expires_box">
+          Expires
+        </label>
+
+        <input type="date" id="expires_box" name="query_expires">
+      </div>
+
+      <div class="col-12">
+        <label for="reason_box">
+          Reason
+        </label>
+
+        <textarea class="form-control" id="reason_box" name="query_reason"></textarea>
+      </div>
+
+      <div class="col-12">
+        <label for="expectations_box">
+          Expectations
+        </label>
+
+        <textarea class="form-control" id="expectations_box" name="query_expectations"></textarea>
+      </div>
+
+      <button style="width: 300px;">
+        Issue discipline
+      </button>
+    </form>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Update Employee Profile
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionBasic">
+      <div class="accordion-body">
+       <div>
+    <form action="/modify_user/<%= @the_user.emp_id %>"  method="post" >
           <h2>
       Edit user
     </h2>
@@ -281,85 +382,14 @@
     </form>
   </div>
 </div>
-
+      </div>
+    </div>
+  </div>
+</div>
 <hr>
-    <div class="container-md">
 
-
-    <form action="/insert_discipline" method="post" class="row g-3">
-        <h2>
-      Issue Discipline
-    </h2>
-      <div class="col-md-6"> 
-        <label for="emp_id_box">
-          Employee
-        </label>
-
-        <input type="text" readonly class="form-control-plaintext" id="emp_id_box" name="query_emp_id" value="<%= @the_user.emp_id %>">
-      </div>
-
-      <div class="col-md-6">
-        <label for="sup_id_box">
-          Supervisor
-        </label>
-
-        <input type="text" readonly class="form-control-plaintext" id="sup_id_box" name="query_sup_id" value="<%= current_user.emp_id %>">
-      </div>
-
-      <div class="col-12">
-      <label for="level_box" class="form-label">Discipline Level</label>
-<input class="form-control" list="datalistOptions" id="level_box" placeholder="Type to search..." name="query_level">
-<datalist id="datalistOptions">
-  <option value="Coach & Counsel">
-  <option value="Documented Verbal Warning">
-  <option value="Documented Written Warning">
-  <option value="Final Termination Warning">
-  <option value="Termination">
-</datalist>
-
-      </div>
-
-      <div class="col-md-6">
-        <label for="effective_box">
-          Effective
-        </label>
-
-        <input type="date" id="effective_box" name="query_effective">
-      </div>
-
-      <div class="col-md-6">
-        <label for="expires_box">
-          Expires
-        </label>
-
-        <input type="date" id="expires_box" name="query_expires">
-      </div>
-
-      <div class="col-12">
-        <label for="reason_box">
-          Reason
-        </label>
-
-        <textarea class="form-control" id="reason_box" name="query_reason"></textarea>
-      </div>
-
-      <div class="col-12">
-        <label for="expectations_box">
-          Expectations
-        </label>
-
-        <textarea class="form-control" id="expectations_box" name="query_expectations"></textarea>
-      </div>
-
-      <button style="width: 300px;">
-        Issue discipline
-      </button>
-    </form>
-  </div>
-  </div>
    <div>
         <a href="/delete_user/<%= @the_user.id %>">
           Delete user
         </a>
       </div>
-<hr>

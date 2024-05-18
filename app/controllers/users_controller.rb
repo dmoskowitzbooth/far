@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
     if params[:search].present?
       search_term = "%#{params[:search]}%"
-      @list_of_users = User.where("emp_id LIKE ? OR first_name LIKE ? OR last_name LIKE ?", search_term, search_term, search_term)
+      @list_of_users = User.where("emp_id LIKE ? OR first_name LIKE ? OR last_name LIKE ?", search_term, search_term, search_term).page(params[:page]).per(25)
     else
-      @list_of_users = User.all
+      @list_of_users = User.all.page(params[:page]).per(25)
     end
 
 

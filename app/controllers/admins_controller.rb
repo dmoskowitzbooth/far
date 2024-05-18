@@ -7,3 +7,4 @@ class AdminsController < ApplicationController
     render({ :template => "adminhome" })
   end
 end
+
