@@ -70,17 +70,16 @@
 </div>
 
 <hr>
-<div class="accordion" id="accordionBasic">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Active Discipline
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionBasic">
-      <div class="accordion-body">
-        <div>
-  <div>
+
+
+<nav class="nav nav-tabs" id="nav-tab" role="tablist">
+  <a class="nav-link active" id="nav-active-discipline-tab" data-bs-toggle="tab" href="#nav-active-discipline" role="tab" aria-controls="nav-active-discipline" aria-selected="true">Active Discipline</a>
+  <a class="nav-link" id="nav-expired-discipline-tab" data-bs-toggle="tab" href="#nav-expired-discipline" role="tab" aria-controls="nav-expired-discipline" aria-selected="false">Expired Discipline</a>
+  <a class="nav-link" id="nav-issue-discipline-tab" data-bs-toggle="tab" href="#nav-issue-discipline" role="tab" aria-controls="nav-issue-discipline" aria-selected="false">Issue Discipline</a>
+  <a class="nav-link" id="nav-update-profile-tab" data-bs-toggle="tab" href="#nav-update-profile" role="tab" aria-controls="nav-update-profile" aria-selected="false">Update Employee Profile</a>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-active-discipline" role="tabpanel" aria-labelledby="nav-active-discipline-tab">
     <table class="table">
       <tr>
 
@@ -141,18 +140,7 @@
       <% end %>
     </table>
   </div>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Expired Discipline
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionBasic">
-      <div class="accordion-body">
-        <div>
+  <div class="tab-pane fade" id="nav-expired-discipline" role="tabpanel" aria-labelledby="nav-expired-discipline-tab">
     <table class="table">
       <tr>
 
@@ -213,23 +201,8 @@
       <% end %>
     </table>
   </div>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Issue Discipline
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionBasic">
-      <div class="accordion-body">
-        <div class="form-container", style="float:left; width:50%; margin:auto">
-    <form action="/insert_discipline" method="post" class="row g-3">
-        <h2>
-      Issue Discipline
-    </h2>
-      <div class="col-md-6"> 
+  <div class="tab-pane fade" id="nav-issue-discipline" role="tabpanel" aria-labelledby="nav-issue-discipline-tab">
+    <div class="col-md-6"> 
         <label for="emp_id_box">
           Employee
         </label>
@@ -295,25 +268,10 @@
       </button>
     </form>
   </div>
-  </div>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Update Employee Profile
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionBasic">
-      <div class="accordion-body">
-       <div>
-    <form action="/modify_user/<%= @the_user.emp_id %>"  method="post" >
-          <h2>
-      Edit user
-    </h2>
-      <div>
-        <label for="emp_id_box">
+  <div class="tab-pane fade" id="nav-update-profile" role="tabpanel" aria-labelledby="nav-update-profile-tab">
+<div class="col-md-6"> 
+<div>
+    <label for="emp_id_box">
           EMP_ID
         </label>
 
@@ -380,13 +338,11 @@
         Update user
       </button>
     </form>
+
   </div>
 </div>
-      </div>
-    </div>
-  </div>
-</div>
-<hr>
+
+
 
    <div>
         <a href="/delete_user/<%= @the_user.id %>">
